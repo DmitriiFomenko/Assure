@@ -34,6 +34,12 @@ class GreeterClient extends $grpc.Client {
           ($0.QuestionCreateProto value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $0.QuestionCreateProtoResult.fromBuffer(value));
+  static final _$getQuestion =
+      $grpc.ClientMethod<$0.QuestionGetProto, $0.QuestionGetProtoReply>(
+          '/Greeter/getQuestion',
+          ($0.QuestionGetProto value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) =>
+              $0.QuestionGetProtoReply.fromBuffer(value));
 
   GreeterClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -60,6 +66,12 @@ class GreeterClient extends $grpc.Client {
       $0.QuestionCreateProto request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$createQuestion, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$0.QuestionGetProtoReply> getQuestion(
+      $0.QuestionGetProto request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getQuestion, request, options: options);
   }
 }
 
@@ -99,6 +111,15 @@ abstract class GreeterServiceBase extends $grpc.Service {
         ($core.List<$core.int> value) =>
             $0.QuestionCreateProto.fromBuffer(value),
         ($0.QuestionCreateProtoResult value) => value.writeToBuffer()));
+    $addMethod(
+        $grpc.ServiceMethod<$0.QuestionGetProto, $0.QuestionGetProtoReply>(
+            'getQuestion',
+            getQuestion_Pre,
+            false,
+            false,
+            ($core.List<$core.int> value) =>
+                $0.QuestionGetProto.fromBuffer(value),
+            ($0.QuestionGetProtoReply value) => value.writeToBuffer()));
   }
 
   $async.Future<$0.AuthReply> signUp_Pre(
@@ -123,6 +144,12 @@ abstract class GreeterServiceBase extends $grpc.Service {
     return createQuestion(call, await request);
   }
 
+  $async.Future<$0.QuestionGetProtoReply> getQuestion_Pre(
+      $grpc.ServiceCall call,
+      $async.Future<$0.QuestionGetProto> request) async {
+    return getQuestion(call, await request);
+  }
+
   $async.Future<$0.AuthReply> signUp(
       $grpc.ServiceCall call, $0.AuthRequest request);
   $async.Future<$0.AuthReply> signIn(
@@ -131,4 +158,6 @@ abstract class GreeterServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $0.ChangePasswordRequest request);
   $async.Future<$0.QuestionCreateProtoResult> createQuestion(
       $grpc.ServiceCall call, $0.QuestionCreateProto request);
+  $async.Future<$0.QuestionGetProtoReply> getQuestion(
+      $grpc.ServiceCall call, $0.QuestionGetProto request);
 }

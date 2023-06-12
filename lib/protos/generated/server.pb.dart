@@ -537,6 +537,7 @@ class QuestionDescriptionProto extends $pb.GeneratedMessage {
     ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'author')
     ..a<$core.double>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'rating', $pb.PbFieldType.OD)
     ..aInt64(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'countPasses', protoName: 'countPasses')
+    ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id')
     ..hasRequiredFields = false
   ;
 
@@ -548,6 +549,7 @@ class QuestionDescriptionProto extends $pb.GeneratedMessage {
     $core.String? author,
     $core.double? rating,
     $fixnum.Int64? countPasses,
+    $core.String? id,
   }) {
     final _result = create();
     if (title != null) {
@@ -567,6 +569,9 @@ class QuestionDescriptionProto extends $pb.GeneratedMessage {
     }
     if (countPasses != null) {
       _result.countPasses = countPasses;
+    }
+    if (id != null) {
+      _result.id = id;
     }
     return _result;
   }
@@ -644,6 +649,15 @@ class QuestionDescriptionProto extends $pb.GeneratedMessage {
   $core.bool hasCountPasses() => $_has(5);
   @$pb.TagNumber(6)
   void clearCountPasses() => clearField(6);
+
+  @$pb.TagNumber(7)
+  $core.String get id => $_getSZ(6);
+  @$pb.TagNumber(7)
+  set id($core.String v) { $_setString(6, v); }
+  @$pb.TagNumber(7)
+  $core.bool hasId() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearId() => clearField(7);
 }
 
 class QuestionCreateProto extends $pb.GeneratedMessage {
@@ -835,5 +849,75 @@ class QuestionResultProto extends $pb.GeneratedMessage {
   $core.bool hasSumCount() => $_has(2);
   @$pb.TagNumber(3)
   void clearSumCount() => clearField(3);
+}
+
+class QuestionGetProto extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'QuestionGetProto', createEmptyInstance: create)
+    ..hasRequiredFields = false
+  ;
+
+  QuestionGetProto._() : super();
+  factory QuestionGetProto() => create();
+  factory QuestionGetProto.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory QuestionGetProto.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  QuestionGetProto clone() => QuestionGetProto()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  QuestionGetProto copyWith(void Function(QuestionGetProto) updates) => super.copyWith((message) => updates(message as QuestionGetProto)) as QuestionGetProto; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static QuestionGetProto create() => QuestionGetProto._();
+  QuestionGetProto createEmptyInstance() => create();
+  static $pb.PbList<QuestionGetProto> createRepeated() => $pb.PbList<QuestionGetProto>();
+  @$core.pragma('dart2js:noInline')
+  static QuestionGetProto getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<QuestionGetProto>(create);
+  static QuestionGetProto? _defaultInstance;
+}
+
+class QuestionGetProtoReply extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'QuestionGetProtoReply', createEmptyInstance: create)
+    ..pc<QuestionDescriptionProto>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'questionDescriptionProto', $pb.PbFieldType.PM, protoName: 'questionDescriptionProto', subBuilder: QuestionDescriptionProto.create)
+    ..hasRequiredFields = false
+  ;
+
+  QuestionGetProtoReply._() : super();
+  factory QuestionGetProtoReply({
+    $core.Iterable<QuestionDescriptionProto>? questionDescriptionProto,
+  }) {
+    final _result = create();
+    if (questionDescriptionProto != null) {
+      _result.questionDescriptionProto.addAll(questionDescriptionProto);
+    }
+    return _result;
+  }
+  factory QuestionGetProtoReply.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory QuestionGetProtoReply.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  QuestionGetProtoReply clone() => QuestionGetProtoReply()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  QuestionGetProtoReply copyWith(void Function(QuestionGetProtoReply) updates) => super.copyWith((message) => updates(message as QuestionGetProtoReply)) as QuestionGetProtoReply; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static QuestionGetProtoReply create() => QuestionGetProtoReply._();
+  QuestionGetProtoReply createEmptyInstance() => create();
+  static $pb.PbList<QuestionGetProtoReply> createRepeated() => $pb.PbList<QuestionGetProtoReply>();
+  @$core.pragma('dart2js:noInline')
+  static QuestionGetProtoReply getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<QuestionGetProtoReply>(create);
+  static QuestionGetProtoReply? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<QuestionDescriptionProto> get questionDescriptionProto => $_getList(0);
 }
 

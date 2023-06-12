@@ -6,6 +6,7 @@ service Greeter {
   rpc signIn (AuthRequest) returns (AuthReply) {}
   rpc changePassword (ChangePasswordRequest) returns (ChangePasswordReply) {}
   rpc createQuestion (QuestionCreateProto) returns (QuestionCreateProtoResult){}
+  rpc getQuestion (QuestionGetProto) returns (QuestionGetProtoReply){}
 }
 
 // The request message containing the user's name.
@@ -60,6 +61,7 @@ message QuestionDescriptionProto{
   string author = 4;
   double rating = 5;
   int64 countPasses = 6;
+  string id = 7;
 }
 
 message QuestionCreateProto{
@@ -76,4 +78,11 @@ message QuestionResultProto{
   repeated string variants = 1;
   repeated string stats = 2;
   string sumCount =3;
+}
+
+message QuestionGetProto{
+}
+
+message QuestionGetProtoReply{
+  repeated QuestionDescriptionProto questionDescriptionProto = 1;
 }

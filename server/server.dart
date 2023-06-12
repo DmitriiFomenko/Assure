@@ -1,5 +1,5 @@
+import 'dart:async';
 import 'dart:convert';
-import 'dart:ffi';
 import 'dart:math';
 
 import 'package:assure/models/account.dart';
@@ -20,9 +20,6 @@ class ServerUtils {
     final day = dateTime.day.toString().padLeft(2, '0');
     final month = dateTime.month.toString().padLeft(2, '0');
     final year = dateTime.year;
-    // final hour = dateTime.hour.toString().padLeft(2, '0');
-    // final minute = dateTime.minute.toString().padLeft(2, '0');
-    // final second = dateTime.second.toString().padLeft(2, '0');
 
     final date = '$day.$month.$year';
     return date;
@@ -130,6 +127,25 @@ class GreeterService extends GreeterServiceBase {
     } catch (e) {
       return QuestionCreateProtoResult(created: false);
     }
+  }
+
+  @override
+  Future<QuestionGetProtoReply> getQuestion(
+      ServiceCall call, QuestionGetProto request) async {
+    final result = QuestionGetProtoReply(questionDescriptionProto: []);
+
+    final dir = Directory(_pathToTests);
+    List<FileSystemEntity> contents = dir.listSync();
+    for (var file in contents) {
+      if (file is File) {
+        final nameTest = file.path.split('/').last;
+        final id = nameTest.substring(0, nameTest.length - 4);
+        final dataString = file.readAsStringSync();
+        final data = QuestionCreateProto.fromJson(dataString);
+        result.questionDescriptionProto.add(data.description..id = id);
+      }
+    }
+    return result;
   }
 }
 

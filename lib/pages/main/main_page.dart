@@ -15,6 +15,13 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   String text = '';
 
+  List<CardTestShort> cardTestShort = [];
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,28 +30,26 @@ class _MainPageState extends State<MainPage> {
         child: Center(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12),
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const SizedBox(height: 8),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 8),
-                    child: CardTest(
-                      cardTestShort: CardTestShort(
-                        title: 'Узнай кто ты по знаку зодиака',
-                        description:
-                            'Этот тест позволит тебе узнать твой знак задиака по дате рождения',
-                        username: 'Dmitrii',
-                        date: '03.06.2023',
-                        countPasses: '2',
-                        rating: '4.0',
-                      ),
-                    ),
+            child: ListView.separated(
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  child: CardTest(
+                    cardTestShort: cardTestShort[index],
+                    // CardTestShort(
+                    //   title: 'Узнай кто ты по знаку зодиака',
+                    //   description:
+                    //       'Этот тест позволит тебе узнать твой знак задиака по дате рождения',
+                    //   username: 'Dmitrii',
+                    //   date: '03.06.2023',
+                    //   countPasses: '2',
+                    //   rating: '4.0',
+                    // ),
                   ),
-                  const SizedBox(height: 8),
-                ],
-              ),
+                );
+              },
+              separatorBuilder: (context, index) => const SizedBox(height: 8),
+              itemCount: cardTestShort.length,
             ),
           ),
         ),

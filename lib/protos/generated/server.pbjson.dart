@@ -115,11 +115,12 @@ const QuestionDescriptionProto$json = const {
     const {'1': 'author', '3': 4, '4': 1, '5': 9, '10': 'author'},
     const {'1': 'rating', '3': 5, '4': 1, '5': 1, '10': 'rating'},
     const {'1': 'countPasses', '3': 6, '4': 1, '5': 3, '10': 'countPasses'},
+    const {'1': 'id', '3': 7, '4': 1, '5': 9, '10': 'id'},
   ],
 };
 
 /// Descriptor for `QuestionDescriptionProto`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List questionDescriptionProtoDescriptor = $convert.base64Decode('ChhRdWVzdGlvbkRlc2NyaXB0aW9uUHJvdG8SFAoFdGl0bGUYASABKAlSBXRpdGxlEiAKC2Rlc2NyaXB0aW9uGAIgASgJUgtkZXNjcmlwdGlvbhISCgRkYXRlGAMgASgJUgRkYXRlEhYKBmF1dGhvchgEIAEoCVIGYXV0aG9yEhYKBnJhdGluZxgFIAEoAVIGcmF0aW5nEiAKC2NvdW50UGFzc2VzGAYgASgDUgtjb3VudFBhc3Nlcw==');
+final $typed_data.Uint8List questionDescriptionProtoDescriptor = $convert.base64Decode('ChhRdWVzdGlvbkRlc2NyaXB0aW9uUHJvdG8SFAoFdGl0bGUYASABKAlSBXRpdGxlEiAKC2Rlc2NyaXB0aW9uGAIgASgJUgtkZXNjcmlwdGlvbhISCgRkYXRlGAMgASgJUgRkYXRlEhYKBmF1dGhvchgEIAEoCVIGYXV0aG9yEhYKBnJhdGluZxgFIAEoAVIGcmF0aW5nEiAKC2NvdW50UGFzc2VzGAYgASgDUgtjb3VudFBhc3NlcxIOCgJpZBgHIAEoCVICaWQ=');
 @$core.Deprecated('Use questionCreateProtoDescriptor instead')
 const QuestionCreateProto$json = const {
   '1': 'QuestionCreateProto',
@@ -155,3 +156,20 @@ const QuestionResultProto$json = const {
 
 /// Descriptor for `QuestionResultProto`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List questionResultProtoDescriptor = $convert.base64Decode('ChNRdWVzdGlvblJlc3VsdFByb3RvEhoKCHZhcmlhbnRzGAEgAygJUgh2YXJpYW50cxIUCgVzdGF0cxgCIAMoCVIFc3RhdHMSGgoIc3VtQ291bnQYAyABKAlSCHN1bUNvdW50');
+@$core.Deprecated('Use questionGetProtoDescriptor instead')
+const QuestionGetProto$json = const {
+  '1': 'QuestionGetProto',
+};
+
+/// Descriptor for `QuestionGetProto`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List questionGetProtoDescriptor = $convert.base64Decode('ChBRdWVzdGlvbkdldFByb3Rv');
+@$core.Deprecated('Use questionGetProtoReplyDescriptor instead')
+const QuestionGetProtoReply$json = const {
+  '1': 'QuestionGetProtoReply',
+  '2': const [
+    const {'1': 'questionDescriptionProto', '3': 1, '4': 3, '5': 11, '6': '.QuestionDescriptionProto', '10': 'questionDescriptionProto'},
+  ],
+};
+
+/// Descriptor for `QuestionGetProtoReply`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List questionGetProtoReplyDescriptor = $convert.base64Decode('ChVRdWVzdGlvbkdldFByb3RvUmVwbHkSVQoYcXVlc3Rpb25EZXNjcmlwdGlvblByb3RvGAEgAygLMhkuUXVlc3Rpb25EZXNjcmlwdGlvblByb3RvUhhxdWVzdGlvbkRlc2NyaXB0aW9uUHJvdG8=');
