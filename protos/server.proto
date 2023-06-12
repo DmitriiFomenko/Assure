@@ -1,0 +1,79 @@
+syntax = "proto3";
+
+// The greeting service definition.
+service Greeter {
+  rpc signUp (AuthRequest) returns (AuthReply) {}
+  rpc signIn (AuthRequest) returns (AuthReply) {}
+  rpc changePassword (ChangePasswordRequest) returns (ChangePasswordReply) {}
+  rpc createQuestion (QuestionCreateProto) returns (QuestionCreateProtoResult){}
+}
+
+// The request message containing the user's name.
+message HelloRequest {
+  string name = 1;
+}
+
+// The response message containing the greetings
+message HelloReply {
+  string message = 1;
+}
+
+message AuthRequest{
+  AccountProto account = 1;
+}
+
+message AuthReply{
+  bool result = 1;
+}
+
+message ChangePasswordRequest{
+  AccountProto account = 1;
+  string newPassowrd = 2;
+}
+
+message ChangePasswordReply{
+  bool checkOldPassword= 1;
+  bool result = 2;
+}
+
+message AccountProto {
+  string login = 1;
+  string password = 2;
+}
+
+message AnswerProto{
+  string answer = 1;
+  string score = 2;
+  string result = 3;
+  bool isEnd = 4;
+}
+
+message QuestionPageProto{
+  string question = 1;
+  repeated AnswerProto listAnswers = 2;
+}
+
+message QuestionDescriptionProto{
+  string title = 1;
+  string description = 2;
+  string date = 3;
+  string author = 4;
+  double rating = 5;
+  int64 countPasses = 6;
+}
+
+message QuestionCreateProto{
+  AccountProto account = 1;
+  QuestionDescriptionProto description = 2;
+  repeated QuestionPageProto questionPageProto = 3;
+  repeated string listResult = 4;
+}
+message QuestionCreateProtoResult{
+  bool created = 1;
+}
+
+message QuestionResultProto{
+  repeated string variants = 1;
+  repeated string stats = 2;
+  string sumCount =3;
+}
