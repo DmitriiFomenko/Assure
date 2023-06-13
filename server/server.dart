@@ -135,7 +135,10 @@ class GreeterService extends GreeterServiceBase {
     final result = QuestionGetProtoReply(questionDescriptionProto: []);
 
     final dir = Directory(_pathToTests);
-    List<FileSystemEntity> contents = dir.listSync();
+    List<FileSystemEntity> contents = dir.listSync()
+      ..sort(
+        (b, a) => a.statSync().changed.compareTo(b.statSync().changed),
+      );
     for (var file in contents) {
       if (file is File) {
         final nameTest = file.path.split('/').last;
@@ -146,6 +149,19 @@ class GreeterService extends GreeterServiceBase {
       }
     }
     return result;
+  }
+
+  @override
+  Future<QuestionCreateProto> getIdQuestion(
+      ServiceCall call, QuestionIdGetProto request) async {
+    final file = File('$_pathToTests${request.id}.txt');
+    final nameTest = file.path.split('/').last;
+    final id = nameTest.substring(0, nameTest.length - 4);
+
+    final dataString = file.readAsStringSync();
+    final data = QuestionCreateProto.fromJson(dataString);
+    data.description.id = id;
+    return data;
   }
 }
 

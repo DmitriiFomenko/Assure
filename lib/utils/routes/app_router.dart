@@ -4,6 +4,7 @@ import 'package:assure/pages/new_test/new_test_page.dart';
 import 'package:assure/pages/result/result_page.dart';
 import 'package:assure/pages/setting/setting_page.dart';
 import 'package:assure/pages/test/test_page.dart';
+import 'package:assure/protos/generated/server.pb.dart';
 import 'package:assure/utils/routes/name_routes.dart';
 import 'package:flutter/material.dart';
 
@@ -31,8 +32,9 @@ class AppRouter {
           builder: (_) => const ResultPage(),
         );
       case NameRoutes.test:
+        final argument = routeSettings.arguments as QuestionCreateProto;
         return MaterialPageRoute(
-          builder: (_) => const TestPage(),
+          builder: (_) => TestPage(questions: argument),
         );
       default:
         debugPrint('Page "${routeSettings.name}" not found');

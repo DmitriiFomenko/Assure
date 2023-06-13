@@ -12,6 +12,7 @@ class CardTestShort with _$CardTestShort {
     required String date,
     required String countPasses,
     required String rating,
+    required String id,
   }) = _CardTestShort;
 
   factory CardTestShort.fromJson(Map<String, Object?> json) =>

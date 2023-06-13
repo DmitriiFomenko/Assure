@@ -3,28 +3,27 @@ import 'package:assure/utils/routes/name_routes.dart';
 import 'package:flutter/material.dart';
 
 class MainAppbar extends StatelessWidget implements PreferredSizeWidget {
-  const MainAppbar({super.key});
+  const MainAppbar({super.key, required this.onRefresh});
+
+  final Function() onRefresh;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       actions: [
+        IconButton(
+            onPressed: () {
+              onRefresh();
+            },
+            icon: const Icon(Icons.refresh)),
         PopupMenuButton(
           onSelected: (value) {
             if (value == 0) {
-              Navigator.of(context).pushNamed(NameRoutes.result);
-              return;
-            }
-            if (value == 3) {
-              Navigator.of(context).pushNamed(NameRoutes.test);
-              return;
-            }
-            if (value == 1) {
               Navigator.of(context).pushNamedAndRemoveUntil(
                   NameRoutes.setting, (route) => false);
               return;
             }
-            if (value == 2) {
+            if (value == 1) {
               Navigator.of(context)
                   .pushNamedAndRemoveUntil(NameRoutes.login, (route) => false);
               return;
@@ -34,19 +33,11 @@ class MainAppbar extends StatelessWidget implements PreferredSizeWidget {
             return <PopupMenuEntry>[
               PopupMenuItem(
                 value: 0,
-                child: Text(S.of(context).my_tests),
-              ),
-              PopupMenuItem(
-                value: 1,
                 child: Text(S.of(context).setting),
               ),
               const PopupMenuDivider(),
               PopupMenuItem(
-                value: 2,
-                child: Text(S.of(context).log_out),
-              ),
-              PopupMenuItem(
-                value: 3,
+                value: 1,
                 child: Text(S.of(context).log_out),
               ),
             ];

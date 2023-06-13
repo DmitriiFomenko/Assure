@@ -14,6 +14,7 @@ _$_CardTestShort _$$_CardTestShortFromJson(Map<String, dynamic> json) =>
       date: json['date'] as String,
       countPasses: json['countPasses'] as String,
       rating: json['rating'] as String,
+      id: json['id'] as String,
     );
 
 Map<String, dynamic> _$$_CardTestShortToJson(_$_CardTestShort instance) =>
@@ -24,4 +25,5 @@ Map<String, dynamic> _$$_CardTestShortToJson(_$_CardTestShort instance) =>
       'date': instance.date,
       'countPasses': instance.countPasses,
       'rating': instance.rating,
+      'id': instance.id,
     };

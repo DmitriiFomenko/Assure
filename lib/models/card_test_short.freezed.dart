@@ -26,6 +26,7 @@ mixin _$CardTestShort {
   String get date => throw _privateConstructorUsedError;
   String get countPasses => throw _privateConstructorUsedError;
   String get rating => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -45,7 +46,8 @@ abstract class $CardTestShortCopyWith<$Res> {
       String username,
       String date,
       String countPasses,
-      String rating});
+      String rating,
+      String id});
 }
 
 /// @nodoc
@@ -67,6 +69,7 @@ class _$CardTestShortCopyWithImpl<$Res, $Val extends CardTestShort>
     Object? date = null,
     Object? countPasses = null,
     Object? rating = null,
+    Object? id = null,
   }) {
     return _then(_value.copyWith(
       title: null == title
@@ -93,6 +96,10 @@ class _$CardTestShortCopyWithImpl<$Res, $Val extends CardTestShort>
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
               as String,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -111,7 +118,8 @@ abstract class _$$_CardTestShortCopyWith<$Res>
       String username,
       String date,
       String countPasses,
-      String rating});
+      String rating,
+      String id});
 }
 
 /// @nodoc
@@ -131,6 +139,7 @@ class __$$_CardTestShortCopyWithImpl<$Res>
     Object? date = null,
     Object? countPasses = null,
     Object? rating = null,
+    Object? id = null,
   }) {
     return _then(_$_CardTestShort(
       title: null == title
@@ -157,6 +166,10 @@ class __$$_CardTestShortCopyWithImpl<$Res>
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
               as String,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -170,7 +183,8 @@ class _$_CardTestShort implements _CardTestShort {
       required this.username,
       required this.date,
       required this.countPasses,
-      required this.rating});
+      required this.rating,
+      required this.id});
 
   factory _$_CardTestShort.fromJson(Map<String, dynamic> json) =>
       _$$_CardTestShortFromJson(json);
@@ -187,10 +201,12 @@ class _$_CardTestShort implements _CardTestShort {
   final String countPasses;
   @override
   final String rating;
+  @override
+  final String id;
 
   @override
   String toString() {
-    return 'CardTestShort(title: $title, description: $description, username: $username, date: $date, countPasses: $countPasses, rating: $rating)';
+    return 'CardTestShort(title: $title, description: $description, username: $username, date: $date, countPasses: $countPasses, rating: $rating, id: $id)';
   }
 
   @override
@@ -206,13 +222,14 @@ class _$_CardTestShort implements _CardTestShort {
             (identical(other.date, date) || other.date == date) &&
             (identical(other.countPasses, countPasses) ||
                 other.countPasses == countPasses) &&
-            (identical(other.rating, rating) || other.rating == rating));
+            (identical(other.rating, rating) || other.rating == rating) &&
+            (identical(other.id, id) || other.id == id));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, title, description, username, date, countPasses, rating);
+      runtimeType, title, description, username, date, countPasses, rating, id);
 
   @JsonKey(ignore: true)
   @override
@@ -235,7 +252,8 @@ abstract class _CardTestShort implements CardTestShort {
       required final String username,
       required final String date,
       required final String countPasses,
-      required final String rating}) = _$_CardTestShort;
+      required final String rating,
+      required final String id}) = _$_CardTestShort;
 
   factory _CardTestShort.fromJson(Map<String, dynamic> json) =
       _$_CardTestShort.fromJson;
@@ -252,6 +270,8 @@ abstract class _CardTestShort implements CardTestShort {
   String get countPasses;
   @override
   String get rating;
+  @override
+  String get id;
   @override
   @JsonKey(ignore: true)
   _$$_CardTestShortCopyWith<_$_CardTestShort> get copyWith =>

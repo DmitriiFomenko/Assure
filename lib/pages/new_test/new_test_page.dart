@@ -1,7 +1,4 @@
 // ignore_for_file: use_build_context_synchronously
-
-import 'dart:ffi';
-
 import 'package:assure/generated/l10n.dart';
 import 'package:assure/main.dart';
 import 'package:assure/models/account.dart';
@@ -41,7 +38,11 @@ class _NewTestPageState extends State<NewTestPage> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
+    controllerTitle.dispose();
+    controllerDescription.dispose();
+    for (var page in cardQuestionModel) {
+      page.pageControllers.dispose();
+    }
     super.dispose();
   }
 

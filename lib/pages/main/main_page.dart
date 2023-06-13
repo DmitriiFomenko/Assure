@@ -2,8 +2,10 @@ import 'package:assure/generated/l10n.dart';
 import 'package:assure/models/card_test_short.dart';
 import 'package:assure/pages/main/widgets/card_test.dart';
 import 'package:assure/pages/main/widgets/main_appbar.dart';
+import 'package:assure/protos/generated/server.pb.dart';
 import 'package:assure/utils/routes/name_routes.dart';
 import 'package:flutter/material.dart';
+import 'package:assure/main.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -13,19 +15,39 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  String text = '';
-
   List<CardTestShort> cardTestShort = [];
+
+  Future<void> loadTests() async {
+    final questions = await server.getQuestion(QuestionGetProto());
+    cardTestShort.clear();
+    cardTestShort.addAll(
+      questions.questionDescriptionProto.map(
+        (e) => CardTestShort(
+          title: e.title + e.id,
+          description: e.description,
+          username: e.author,
+          date: e.date,
+          countPasses: e.countPasses.toString(),
+          rating: e.rating.toString(),
+          id: e.id,
+        ),
+      ),
+    );
+    setState(() {});
+  }
 
   @override
   void initState() {
+    loadTests();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const MainAppbar(),
+      appBar: MainAppbar(onRefresh: () {
+        loadTests();
+      }),
       body: SafeArea(
         child: Center(
           child: Padding(
@@ -34,17 +56,19 @@ class _MainPageState extends State<MainPage> {
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8),
-                  child: CardTest(
-                    cardTestShort: cardTestShort[index],
-                    // CardTestShort(
-                    //   title: 'Узнай кто ты по знаку зодиака',
-                    //   description:
-                    //       'Этот тест позволит тебе узнать твой знак задиака по дате рождения',
-                    //   username: 'Dmitrii',
-                    //   date: '03.06.2023',
-                    //   countPasses: '2',
-                    //   rating: '4.0',
-                    // ),
+                  child: Material(
+                    child: InkWell(
+                      onTap: () async {
+                        final question = await server.getIdQuestion(
+                          QuestionIdGetProto(id: cardTestShort[index].id),
+                        );
+                        Navigator.of(context)
+                            .pushNamed(NameRoutes.test, arguments: question);
+                      },
+                      child: CardTest(
+                        cardTestShort: cardTestShort[index],
+                      ),
+                    ),
                   ),
                 );
               },

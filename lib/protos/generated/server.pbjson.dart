@@ -173,3 +173,13 @@ const QuestionGetProtoReply$json = const {
 
 /// Descriptor for `QuestionGetProtoReply`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List questionGetProtoReplyDescriptor = $convert.base64Decode('ChVRdWVzdGlvbkdldFByb3RvUmVwbHkSVQoYcXVlc3Rpb25EZXNjcmlwdGlvblByb3RvGAEgAygLMhkuUXVlc3Rpb25EZXNjcmlwdGlvblByb3RvUhhxdWVzdGlvbkRlc2NyaXB0aW9uUHJvdG8=');
+@$core.Deprecated('Use questionIdGetProtoDescriptor instead')
+const QuestionIdGetProto$json = const {
+  '1': 'QuestionIdGetProto',
+  '2': const [
+    const {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
+  ],
+};
+
+/// Descriptor for `QuestionIdGetProto`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List questionIdGetProtoDescriptor = $convert.base64Decode('ChJRdWVzdGlvbklkR2V0UHJvdG8SDgoCaWQYASABKAlSAmlk');

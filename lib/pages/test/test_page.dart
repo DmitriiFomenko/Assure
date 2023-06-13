@@ -1,14 +1,20 @@
+import 'package:assure/protos/generated/server.pb.dart';
 import 'package:flutter/material.dart';
 
 class TestPage extends StatefulWidget {
-  const TestPage({super.key});
+  const TestPage({super.key, required this.questions});
+
+  final QuestionCreateProto questions;
 
   @override
   State<TestPage> createState() => _TestPageState();
 }
 
 class _TestPageState extends State<TestPage> {
-  String text = '';
+  int indexQuestionUser = 1;
+  int indexQuestionReal = 0;
+
+  double countScore = 0;
 
   InputDecoration textFieldDecoration({
     required String labelText,
@@ -28,10 +34,7 @@ class _TestPageState extends State<TestPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Вопрос 1'),
-        actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.arrow_right_alt))
-        ],
+        title: Text('Вопрос $indexQuestionUser'),
       ),
       body: GestureDetector(
         onTap: () {
@@ -48,6 +51,11 @@ class _TestPageState extends State<TestPage> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
+                  TextButton(
+                      onPressed: () {
+                        print(widget.questions.questionPageProto);
+                      },
+                      child: Text('data')),
                   const SizedBox(height: 8),
                   Padding(
                       padding: const EdgeInsets.symmetric(vertical: 8),
@@ -59,44 +67,59 @@ class _TestPageState extends State<TestPage> {
                           borderRadius: BorderRadius.circular(16),
                         ),
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            const Text(
-                              'В каком сезоне года вы родились?',
-                              style: TextStyle(fontSize: 16),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: Center(
+                                    child: Text(
+                                      widget
+                                          .questions
+                                          .questionPageProto[indexQuestionReal]
+                                          .question,
+                                      style: const TextStyle(fontSize: 24),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
-                            const SizedBox(height: 8),
-                            ElevatedButton(
-                              onPressed: () {},
-                              child: const Text(
-                                'Лето',
-                                maxLines: 1,
-                              ),
-                            ),
-                            const SizedBox(height: 8),
-                            ElevatedButton(
-                              onPressed: () {},
-                              child: const Text(
-                                'Осень',
-                                maxLines: 1,
-                              ),
-                            ),
-                            const SizedBox(height: 8),
-                            ElevatedButton(
-                              onPressed: () {},
-                              child: const Text(
-                                'Зима',
-                                maxLines: 1,
-                              ),
-                            ),
-                            const SizedBox(height: 8),
-                            ElevatedButton(
-                              onPressed: () {},
-                              child: const Text(
-                                'Весна',
-                                maxLines: 1,
-                              ),
+                            const SizedBox(height: 16),
+                            ListView.separated(
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemCount: widget
+                                  .questions
+                                  .questionPageProto[indexQuestionReal]
+                                  .listAnswers
+                                  .length,
+                              itemBuilder: (context, index) {
+                                final answer = widget
+                                    .questions
+                                    .questionPageProto[indexQuestionReal]
+                                    .listAnswers[index];
+                                return ElevatedButton(
+                                  onPressed: () {
+                                    if (answer.isEnd) {
+                                      //TODO: read answer and get result
+                                      Navigator.of(context).pop();
+                                      return;
+                                    }
+                                    final result = int.tryParse(answer.result);
+                                    if (result == null) return;
+                                    indexQuestionReal = result;
+                                    countScore +=
+                                        double.tryParse(answer.score) ?? 0;
+                                    indexQuestionUser++;
+                                    setState(() {});
+                                  },
+                                  child: Text(
+                                    answer.answer,
+                                  ),
+                                );
+                              },
+                              separatorBuilder: (context, index) =>
+                                  const SizedBox(height: 8),
                             ),
                           ],
                         ),
