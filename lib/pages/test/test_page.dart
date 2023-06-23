@@ -1,3 +1,4 @@
+import 'package:assure/main.dart';
 import 'package:assure/protos/generated/server.pb.dart';
 import 'package:flutter/material.dart';
 
@@ -34,6 +35,12 @@ class _TestPageState extends State<TestPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          icon: const Icon(Icons.close),
+        ),
         title: Text('Вопрос $indexQuestionUser'),
       ),
       body: GestureDetector(
@@ -51,11 +58,6 @@ class _TestPageState extends State<TestPage> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  TextButton(
-                      onPressed: () {
-                        print(widget.questions.questionPageProto);
-                      },
-                      child: Text('data')),
                   const SizedBox(height: 8),
                   Padding(
                       padding: const EdgeInsets.symmetric(vertical: 8),
@@ -99,10 +101,17 @@ class _TestPageState extends State<TestPage> {
                                     .questionPageProto[indexQuestionReal]
                                     .listAnswers[index];
                                 return ElevatedButton(
-                                  onPressed: () {
+                                  onPressed: () async {
                                     if (answer.isEnd) {
                                       //TODO: read answer and get result
-                                      Navigator.of(context).pop();
+                                      final questionResultProto = await server
+                                          .getResultTest(GetResultRequest(
+                                        id: widget.questions.description.id,
+                                        score: countScore.toString(),
+                                        result: answer.result,
+                                      ));
+                                      // print(questionResultProto);
+                                      // Navigator.of(context).pop();
                                       return;
                                     }
                                     final result = int.tryParse(answer.result);

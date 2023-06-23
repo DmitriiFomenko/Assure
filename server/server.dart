@@ -106,6 +106,7 @@ class GreeterService extends GreeterServiceBase {
         file = File('$_pathToTests$randomDigit.txt');
       } while (file.existsSync());
 
+      request.account.password = '';
       request.description.date = ServerUtils.getDate();
       request.description.rating = 0;
       request.description.countPasses = Int64(0);
@@ -115,9 +116,13 @@ class GreeterService extends GreeterServiceBase {
       //======================================================
 
       final stats = QuestionResultProto(
-        variants: ['Score', ...request.listResult],
-        stats: List.generate(request.listResult.length + 1, (index) => '0'),
+        variants: List.generate(
+            request.listResult.length,
+            (index) => VariantAndStats(
+                stats: '0', variant: request.listResult[index])),
         sumCount: '0',
+        scoreCount: '0',
+        scoreSum: '0',
       );
 
       File('$_pathToResults$randomDigit.txt')
@@ -162,6 +167,44 @@ class GreeterService extends GreeterServiceBase {
     final data = QuestionCreateProto.fromJson(dataString);
     data.description.id = id;
     return data;
+  }
+
+  @override
+  Future<QuestionResultProto> getResultTest(
+      ServiceCall call, GetResultRequest request) async {
+    final fileResult = File('$_pathToResults${request.id}.txt');
+    final dataStringResult = fileResult.readAsStringSync();
+
+    final qustionResult = QuestionResultProto.fromJson(dataStringResult);
+
+    int indexAnswer = -1;
+    for (var i = 0; i < qustionResult.variants.length; i++) {
+      if (qustionResult.variants[i].variant == request.result) indexAnswer = i;
+    }
+    if (indexAnswer != -1) {
+      qustionResult.variants[indexAnswer].stats =
+          ((int.tryParse(qustionResult.variants[indexAnswer].stats) ?? 0) + 1)
+              .toString();
+
+      qustionResult.sumCount =
+          ((int.tryParse(qustionResult.sumCount) ?? 0) + 1).toString();
+      qustionResult.scoreCount =
+          ((int.tryParse(qustionResult.scoreCount) ?? 0) + 1).toString();
+      qustionResult.scoreSum = ((int.tryParse(qustionResult.scoreSum) ?? 0) +
+              (int.tryParse(request.score) ?? 0))
+          .toString();
+      fileResult.writeAsStringSync(qustionResult.writeToJson());
+    }
+
+    final fileTest = File('$_pathToTests${request.id}.txt');
+    final dataStringTest = fileTest.readAsStringSync();
+
+    final questionTest = QuestionCreateProto.fromJson(dataStringTest);
+    questionTest.description.countPasses =
+        Int64(int.tryParse(qustionResult.sumCount) ?? 0);
+    fileTest.writeAsStringSync(questionTest.writeToJson());
+
+    return qustionResult;
   }
 }
 

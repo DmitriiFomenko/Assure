@@ -10,100 +10,6 @@ import 'dart:core' as $core;
 import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-class HelloRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'HelloRequest', createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
-    ..hasRequiredFields = false
-  ;
-
-  HelloRequest._() : super();
-  factory HelloRequest({
-    $core.String? name,
-  }) {
-    final _result = create();
-    if (name != null) {
-      _result.name = name;
-    }
-    return _result;
-  }
-  factory HelloRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory HelloRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  HelloRequest clone() => HelloRequest()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  HelloRequest copyWith(void Function(HelloRequest) updates) => super.copyWith((message) => updates(message as HelloRequest)) as HelloRequest; // ignore: deprecated_member_use
-  $pb.BuilderInfo get info_ => _i;
-  @$core.pragma('dart2js:noInline')
-  static HelloRequest create() => HelloRequest._();
-  HelloRequest createEmptyInstance() => create();
-  static $pb.PbList<HelloRequest> createRepeated() => $pb.PbList<HelloRequest>();
-  @$core.pragma('dart2js:noInline')
-  static HelloRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<HelloRequest>(create);
-  static HelloRequest? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.String get name => $_getSZ(0);
-  @$pb.TagNumber(1)
-  set name($core.String v) { $_setString(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasName() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearName() => clearField(1);
-}
-
-class HelloReply extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'HelloReply', createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'message')
-    ..hasRequiredFields = false
-  ;
-
-  HelloReply._() : super();
-  factory HelloReply({
-    $core.String? message,
-  }) {
-    final _result = create();
-    if (message != null) {
-      _result.message = message;
-    }
-    return _result;
-  }
-  factory HelloReply.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory HelloReply.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  HelloReply clone() => HelloReply()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  HelloReply copyWith(void Function(HelloReply) updates) => super.copyWith((message) => updates(message as HelloReply)) as HelloReply; // ignore: deprecated_member_use
-  $pb.BuilderInfo get info_ => _i;
-  @$core.pragma('dart2js:noInline')
-  static HelloReply create() => HelloReply._();
-  HelloReply createEmptyInstance() => create();
-  static $pb.PbList<HelloReply> createRepeated() => $pb.PbList<HelloReply>();
-  @$core.pragma('dart2js:noInline')
-  static HelloReply getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<HelloReply>(create);
-  static HelloReply? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.String get message => $_getSZ(0);
-  @$pb.TagNumber(1)
-  set message($core.String v) { $_setString(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasMessage() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearMessage() => clearField(1);
-}
-
 class AuthRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'AuthRequest', createEmptyInstance: create)
     ..aOM<AccountProto>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'account', subBuilder: AccountProto.create)
@@ -790,27 +696,32 @@ class QuestionCreateProtoResult extends $pb.GeneratedMessage {
 
 class QuestionResultProto extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'QuestionResultProto', createEmptyInstance: create)
-    ..pPS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'variants')
-    ..pPS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'stats')
+    ..pc<VariantAndStats>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'variants', $pb.PbFieldType.PM, subBuilder: VariantAndStats.create)
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'sumCount', protoName: 'sumCount')
+    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'scoreSum', protoName: 'scoreSum')
+    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'scoreCount', protoName: 'scoreCount')
     ..hasRequiredFields = false
   ;
 
   QuestionResultProto._() : super();
   factory QuestionResultProto({
-    $core.Iterable<$core.String>? variants,
-    $core.Iterable<$core.String>? stats,
+    $core.Iterable<VariantAndStats>? variants,
     $core.String? sumCount,
+    $core.String? scoreSum,
+    $core.String? scoreCount,
   }) {
     final _result = create();
     if (variants != null) {
       _result.variants.addAll(variants);
     }
-    if (stats != null) {
-      _result.stats.addAll(stats);
-    }
     if (sumCount != null) {
       _result.sumCount = sumCount;
+    }
+    if (scoreSum != null) {
+      _result.scoreSum = scoreSum;
+    }
+    if (scoreCount != null) {
+      _result.scoreCount = scoreCount;
     }
     return _result;
   }
@@ -836,19 +747,34 @@ class QuestionResultProto extends $pb.GeneratedMessage {
   static QuestionResultProto? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<$core.String> get variants => $_getList(0);
-
-  @$pb.TagNumber(2)
-  $core.List<$core.String> get stats => $_getList(1);
+  $core.List<VariantAndStats> get variants => $_getList(0);
 
   @$pb.TagNumber(3)
-  $core.String get sumCount => $_getSZ(2);
+  $core.String get sumCount => $_getSZ(1);
   @$pb.TagNumber(3)
-  set sumCount($core.String v) { $_setString(2, v); }
+  set sumCount($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(3)
-  $core.bool hasSumCount() => $_has(2);
+  $core.bool hasSumCount() => $_has(1);
   @$pb.TagNumber(3)
   void clearSumCount() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get scoreSum => $_getSZ(2);
+  @$pb.TagNumber(4)
+  set scoreSum($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasScoreSum() => $_has(2);
+  @$pb.TagNumber(4)
+  void clearScoreSum() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.String get scoreCount => $_getSZ(3);
+  @$pb.TagNumber(5)
+  set scoreCount($core.String v) { $_setString(3, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasScoreCount() => $_has(3);
+  @$pb.TagNumber(5)
+  void clearScoreCount() => clearField(5);
 }
 
 class QuestionGetProto extends $pb.GeneratedMessage {
@@ -966,5 +892,141 @@ class QuestionIdGetProto extends $pb.GeneratedMessage {
   $core.bool hasId() => $_has(0);
   @$pb.TagNumber(1)
   void clearId() => clearField(1);
+}
+
+class GetResultRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetResultRequest', createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'result')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'score')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id')
+    ..hasRequiredFields = false
+  ;
+
+  GetResultRequest._() : super();
+  factory GetResultRequest({
+    $core.String? result,
+    $core.String? score,
+    $core.String? id,
+  }) {
+    final _result = create();
+    if (result != null) {
+      _result.result = result;
+    }
+    if (score != null) {
+      _result.score = score;
+    }
+    if (id != null) {
+      _result.id = id;
+    }
+    return _result;
+  }
+  factory GetResultRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory GetResultRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  GetResultRequest clone() => GetResultRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  GetResultRequest copyWith(void Function(GetResultRequest) updates) => super.copyWith((message) => updates(message as GetResultRequest)) as GetResultRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static GetResultRequest create() => GetResultRequest._();
+  GetResultRequest createEmptyInstance() => create();
+  static $pb.PbList<GetResultRequest> createRepeated() => $pb.PbList<GetResultRequest>();
+  @$core.pragma('dart2js:noInline')
+  static GetResultRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetResultRequest>(create);
+  static GetResultRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get result => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set result($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasResult() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearResult() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get score => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set score($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasScore() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearScore() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get id => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set id($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasId() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearId() => clearField(3);
+}
+
+class VariantAndStats extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'VariantAndStats', createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'variant')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'stats')
+    ..hasRequiredFields = false
+  ;
+
+  VariantAndStats._() : super();
+  factory VariantAndStats({
+    $core.String? variant,
+    $core.String? stats,
+  }) {
+    final _result = create();
+    if (variant != null) {
+      _result.variant = variant;
+    }
+    if (stats != null) {
+      _result.stats = stats;
+    }
+    return _result;
+  }
+  factory VariantAndStats.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory VariantAndStats.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  VariantAndStats clone() => VariantAndStats()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  VariantAndStats copyWith(void Function(VariantAndStats) updates) => super.copyWith((message) => updates(message as VariantAndStats)) as VariantAndStats; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static VariantAndStats create() => VariantAndStats._();
+  VariantAndStats createEmptyInstance() => create();
+  static $pb.PbList<VariantAndStats> createRepeated() => $pb.PbList<VariantAndStats>();
+  @$core.pragma('dart2js:noInline')
+  static VariantAndStats getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<VariantAndStats>(create);
+  static VariantAndStats? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get variant => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set variant($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasVariant() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearVariant() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get stats => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set stats($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasStats() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearStats() => clearField(2);
 }
 

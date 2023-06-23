@@ -8,16 +8,7 @@ service Greeter {
   rpc createQuestion (QuestionCreateProto) returns (QuestionCreateProtoResult){}
   rpc getQuestion (QuestionGetProto) returns (QuestionGetProtoReply){}
   rpc getIdQuestion (QuestionIdGetProto) returns (QuestionCreateProto){}
-}
-
-// The request message containing the user's name.
-message HelloRequest {
-  string name = 1;
-}
-
-// The response message containing the greetings
-message HelloReply {
-  string message = 1;
+  rpc getResultTest (GetResultRequest) returns (QuestionResultProto){}
 }
 
 message AuthRequest{
@@ -76,9 +67,10 @@ message QuestionCreateProtoResult{
 }
 
 message QuestionResultProto{
-  repeated string variants = 1;
-  repeated string stats = 2;
+  repeated VariantAndStats variants = 1;
   string sumCount = 3;
+  string scoreSum = 4;
+  string scoreCount = 5;
 }
 
 message QuestionGetProto{
@@ -90,4 +82,15 @@ message QuestionGetProtoReply{
 
 message QuestionIdGetProto{
   string id = 1;
+}
+
+message GetResultRequest{
+  string result = 1;
+  string score = 2;
+  string id = 3;
+}
+
+message VariantAndStats{
+  string variant = 1;
+  string stats = 2;
 }

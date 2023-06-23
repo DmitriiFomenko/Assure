@@ -80,7 +80,9 @@ class _NewTestPageState extends State<NewTestPage> {
         }
         final result = controllerAnswer.controllerResult.text;
         if (controllerAnswer.isEnd && result.isNotEmpty) {
-          questionCreate.listResult.add(result);
+          if (!questionCreate.listResult.contains(result)) {
+            questionCreate.listResult.add(result);
+          }
         }
 
         final answerProto = AnswerProto(
