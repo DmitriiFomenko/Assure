@@ -30,8 +30,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "add_question": MessageLookupByLibrary.simpleMessage("Add question"),
         "answer": MessageLookupByLibrary.simpleMessage("Answer"),
         "assure": MessageLookupByLibrary.simpleMessage("Assure"),
+        "average_score": MessageLookupByLibrary.simpleMessage("Average score"),
         "change_password":
             MessageLookupByLibrary.simpleMessage("Change the password"),
+        "count_score": MessageLookupByLibrary.simpleMessage("Count score: "),
         "create_test": MessageLookupByLibrary.simpleMessage("Create test"),
         "creating_test": MessageLookupByLibrary.simpleMessage("Creating test"),
         "dark": MessageLookupByLibrary.simpleMessage("Dark"),
@@ -58,6 +60,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "no_internet":
             MessageLookupByLibrary.simpleMessage("No internet connection"),
         "old_password": MessageLookupByLibrary.simpleMessage("Old password"),
+        "passed_test": MessageLookupByLibrary.simpleMessage(
+            "Congratulations, you passed the test!"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "password_is_changed":
             MessageLookupByLibrary.simpleMessage("Password is changes"),
@@ -68,6 +72,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "repeat_password":
             MessageLookupByLibrary.simpleMessage("Repeat the password"),
         "result": MessageLookupByLibrary.simpleMessage("Result"),
+        "results": MessageLookupByLibrary.simpleMessage("Results"),
         "russian": MessageLookupByLibrary.simpleMessage("Russian"),
         "score": MessageLookupByLibrary.simpleMessage("Score"),
         "setting": MessageLookupByLibrary.simpleMessage("Setting"),

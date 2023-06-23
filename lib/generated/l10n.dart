@@ -400,6 +400,16 @@ class S {
     );
   }
 
+  /// `Результаты`
+  String get results {
+    return Intl.message(
+      'Результаты',
+      name: 'results',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Закончить тест`
   String get end_test {
     return Intl.message(
@@ -505,6 +515,36 @@ class S {
     return Intl.message(
       'Тест создан',
       name: 'test_created',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Поздравляем, вы прошли тест!`
+  String get passed_test {
+    return Intl.message(
+      'Поздравляем, вы прошли тест!',
+      name: 'passed_test',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Количество баллов: `
+  String get count_score {
+    return Intl.message(
+      'Количество баллов: ',
+      name: 'count_score',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Среднее кол-во баллов`
+  String get average_score {
+    return Intl.message(
+      'Среднее кол-во баллов',
+      name: 'average_score',
       desc: '',
       args: [],
     );

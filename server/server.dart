@@ -190,8 +190,8 @@ class GreeterService extends GreeterServiceBase {
           ((int.tryParse(qustionResult.sumCount) ?? 0) + 1).toString();
       qustionResult.scoreCount =
           ((int.tryParse(qustionResult.scoreCount) ?? 0) + 1).toString();
-      qustionResult.scoreSum = ((int.tryParse(qustionResult.scoreSum) ?? 0) +
-              (int.tryParse(request.score) ?? 0))
+      qustionResult.scoreSum = ((double.tryParse(qustionResult.scoreSum) ?? 0) +
+              (double.tryParse(request.score) ?? 0))
           .toString();
       fileResult.writeAsStringSync(qustionResult.writeToJson());
     }

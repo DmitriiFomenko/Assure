@@ -1,5 +1,6 @@
 import 'package:assure/main.dart';
 import 'package:assure/protos/generated/server.pb.dart';
+import 'package:assure/utils/routes/name_routes.dart';
 import 'package:flutter/material.dart';
 
 class TestPage extends StatefulWidget {
@@ -103,15 +104,20 @@ class _TestPageState extends State<TestPage> {
                                 return ElevatedButton(
                                   onPressed: () async {
                                     if (answer.isEnd) {
-                                      //TODO: read answer and get result
                                       final questionResultProto = await server
                                           .getResultTest(GetResultRequest(
                                         id: widget.questions.description.id,
                                         score: countScore.toString(),
                                         result: answer.result,
                                       ));
-                                      // print(questionResultProto);
-                                      // Navigator.of(context).pop();
+
+                                      Navigator.of(context).popAndPushNamed(
+                                          NameRoutes.result,
+                                          arguments: [
+                                            questionResultProto,
+                                            answer.result,
+                                            countScore
+                                          ]);
                                       return;
                                     }
                                     final result = int.tryParse(answer.result);

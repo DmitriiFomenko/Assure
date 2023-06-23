@@ -23,7 +23,7 @@ class _MainPageState extends State<MainPage> {
     cardTestShort.addAll(
       questions.questionDescriptionProto.map(
         (e) => CardTestShort(
-          title: e.title + e.id,
+          title: e.title,
           description: e.description,
           username: e.author,
           date: e.date,

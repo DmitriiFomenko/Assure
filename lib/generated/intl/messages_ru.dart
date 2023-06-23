@@ -30,8 +30,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "add_question": MessageLookupByLibrary.simpleMessage("Добавить вопрос"),
         "answer": MessageLookupByLibrary.simpleMessage("Ответ"),
         "assure": MessageLookupByLibrary.simpleMessage("Assure"),
+        "average_score":
+            MessageLookupByLibrary.simpleMessage("Среднее кол-во баллов"),
         "change_password":
             MessageLookupByLibrary.simpleMessage("Изменить пароль"),
+        "count_score":
+            MessageLookupByLibrary.simpleMessage("Количество баллов: "),
         "create_test": MessageLookupByLibrary.simpleMessage("Создать тест"),
         "creating_test": MessageLookupByLibrary.simpleMessage("Создание теста"),
         "dark": MessageLookupByLibrary.simpleMessage("Темная"),
@@ -59,6 +63,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "no_internet":
             MessageLookupByLibrary.simpleMessage("Нет подключения к интернету"),
         "old_password": MessageLookupByLibrary.simpleMessage("Старый пароль"),
+        "passed_test": MessageLookupByLibrary.simpleMessage(
+            "Поздравляем, вы прошли тест!"),
         "password": MessageLookupByLibrary.simpleMessage("Пароль"),
         "password_is_changed":
             MessageLookupByLibrary.simpleMessage("Пароль изменен!"),
@@ -69,6 +75,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "repeat_password":
             MessageLookupByLibrary.simpleMessage("Повторите пароль"),
         "result": MessageLookupByLibrary.simpleMessage("Результат"),
+        "results": MessageLookupByLibrary.simpleMessage("Результаты"),
         "russian": MessageLookupByLibrary.simpleMessage("Русский"),
         "score": MessageLookupByLibrary.simpleMessage("Баллы"),
         "setting": MessageLookupByLibrary.simpleMessage("Настройки"),

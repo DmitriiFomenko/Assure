@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 
 class AppRouter {
   Route<dynamic>? onGenerateRoute(RouteSettings routeSettings) {
+    try {} catch (e) {}
     switch (routeSettings.name) {
       case NameRoutes.main:
         return MaterialPageRoute(
@@ -28,8 +29,16 @@ class AppRouter {
           builder: (_) => const NewTestPage(),
         );
       case NameRoutes.result:
+        final list = routeSettings.arguments as List;
+        final argument = list[0] as QuestionResultProto;
+        final answer = list[1] as String;
+        final countScore = list[2] as double;
         return MaterialPageRoute(
-          builder: (_) => const ResultPage(),
+          builder: (_) => ResultPage(
+            questionResultProto: argument,
+            answer: answer,
+            countScore: countScore,
+          ),
         );
       case NameRoutes.test:
         final argument = routeSettings.arguments as QuestionCreateProto;

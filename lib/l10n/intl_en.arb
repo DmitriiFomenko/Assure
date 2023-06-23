@@ -34,6 +34,7 @@
     "answer": "Answer",
     "move_to_page": "Move to page",
     "result": "Result",
+    "results": "Results",
     "end_test": "End test",
     "score": "Score",
     "add_answer": "Add answer",
@@ -44,5 +45,8 @@
     "creating_test": "Creating test",
     "title": "Title",
     "description": "Description",
-    "test_created": "Test created"
+    "test_created": "Test created",
+    "passed_test": "Congratulations, you passed the test!",
+    "count_score": "Count score: ",
+    "average_score": "Average score"
 }
